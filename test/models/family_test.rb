@@ -42,7 +42,7 @@ class FamilyTest < ActiveSupport::TestCase
     end
   end
 
-  test "should destroy dependent transaction categories" do
+  test "should destroy dependent transactions categories" do
     assert_difference("Transaction::Category.count", -@family.transaction_categories.count) do
       @family.destroy
     end

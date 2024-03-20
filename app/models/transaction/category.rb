@@ -6,6 +6,8 @@ class Transaction::Category < ApplicationRecord
 
   before_update :clear_internal_category, if: :name_changed?
 
+  validates_length_of :name, minimum: 3
+
   DEFAULT_CATEGORIES = [
     { internal_category: "income", color: "#e99537" },
     { internal_category: "food_and_drink", color: "#4da568" },
@@ -32,7 +34,7 @@ class Transaction::Category < ApplicationRecord
 
     family_id = family.id
     categories = self::DEFAULT_CATEGORIES.map { |c| {
-      name: I18n.t("transaction.default_category.#{c[:internal_category]}"),
+      name: I18n.t("transactions.default_category.#{c[:internal_category]}"),
       internal_category: c[:internal_category],
       color: c[:color],
       family_id:

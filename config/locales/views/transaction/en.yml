@@ -2,7 +2,7 @@
 en:
   transactions:
     create:
-      success: New transaction created successfully
+      success: New transactions created successfully
     destroy:
       success: Transaction deleted successfully
     update:

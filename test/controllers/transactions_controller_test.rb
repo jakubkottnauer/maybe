@@ -16,7 +16,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create transaction" do
+  test "should create transactions" do
     name = "transaction_name"
     assert_difference("Transaction.count") do
       post transactions_url, params: { transaction: { account_id: @transaction.account_id, amount: @transaction.amount, currency: @transaction.currency, date: @transaction.date, name: } }
@@ -25,7 +25,7 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to transactions_url
   end
 
-  test "should show transaction" do
+  test "should show transactions" do
     get transaction_url(@transaction)
     assert_response :success
   end
@@ -35,12 +35,12 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update transaction" do
+  test "should update transactions" do
     patch transaction_url(@transaction), params: { transaction: { account_id: @transaction.account_id, amount: @transaction.amount, currency: @transaction.currency, date: @transaction.date, name: @transaction.name } }
     assert_redirected_to transaction_url(@transaction)
   end
 
-  test "should destroy transaction" do
+  test "should destroy transactions" do
     assert_difference("Transaction.count", -1) do
       delete transaction_url(@transaction)
     end
