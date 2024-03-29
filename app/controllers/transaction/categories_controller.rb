@@ -1,8 +1,11 @@
 class Transaction::CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: %i[ show update destroy ]
+  before_action :set_category, only: %i[ show edit update destroy ]
 
   def show
+  end
+
+  def edit
   end
 
   def create
@@ -27,7 +30,7 @@ class Transaction::CategoriesController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.append("notification-tray", partial: "shared/notification", locals: { type: "success", content: t(".success") }),
-            turbo_stream.replace(dom_id(category), partial: "accounts/account", locals: { account: @account })
+            # turbo_stream.replace(dom_id(@category), partial: "accounts/account", locals: { account: @account })
           ]
         end
       else
@@ -46,6 +49,10 @@ class Transaction::CategoriesController < ApplicationController
         ]
       end
     end
+  end
+
+  def new
+    @category = Current.family.transaction_categories.new
   end
 
   private

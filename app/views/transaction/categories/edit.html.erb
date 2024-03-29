@@ -1,0 +1,24 @@
+<div>
+  <h1 class="font-bold text-4xl">Edit Transaction Category</h1>
+  <%= turbo_frame_tag "transaction_category_dropdown" do %>
+    <div class="flex flex-col">
+      <div class="grow p-1.5">
+        <div class="relative flex items-center bg-white border border-gray-200 rounded-lg">
+          <%= form_with model: @category, method: :patch, html: { data: { turbo_frame: "_top", controller: "auto-submit-form" }, class: "flex flex-col gap-0.5 p-1.5" } do |form| %>
+            <%= form.text_field :name, placeholder: "Category name", minlength: 3 %>
+          <% end %>
+
+          <!--            <input placeholder="Search" class="placeholder:text-sm placeholder:text-gray-500 h-10 relative pl-10 w-full border-none rounded-lg"/>-->
+          <%#= lucide_icon("search", class: "w-5 h-5 text-gray-500 ml-2 absolute inset-0 transform top-1/2 -translate-y-1/2") %>
+        </div>
+      </div>
+      <hr/>
+      <div class="p-1.5 w-full">
+        <%= link_to transaction_category_path(@category), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "flex text-sm font-medium items-center gap-2 text-red-600 w-full rounded-lg p-2 hover:bg-gray-100" do %>
+          <%= lucide_icon("trash-2", class: "w-5 h-5") %>
+          Delete category
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
